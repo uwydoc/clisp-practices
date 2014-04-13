@@ -1,4 +1,9 @@
+# Temp files
 *.fas
 *.lib
 *.o
 *.dat
+
+*.FASL
+*.fasl
+*.lisp-temp
