@@ -12,8 +12,17 @@
 ; `unless` macro
 (defmacro unless1 (condition &rest body)
   `(if (not ,condition) (progn1 ,@body)))
+; `cond1` macro
+(defmacro cond1 ((condition body))
+  (let ((condition-value condition))
+    (when condition-value `(progn ,body ,condition-value))))
 ; `cond` macro
-(defmacro cond1 (&rest branches)
-  `(dolist (branch ,branches)
+(defmacro cond-a (&body branches)
+  (dolist (branch branches)
     (let ((condition (pop branch)) (body branch))
-      (if condition (progn @body) break))))
+      (when condition (return `(progn ,@body))))))
+(defmacro cond-b (&body branches)
+  (with-gensyms (branch condition body)
+    (dolist (branch branches)
+      (let ((condition (pop branch)) (body branch))
+        (when condition (return `(progn ,@body)))))))
