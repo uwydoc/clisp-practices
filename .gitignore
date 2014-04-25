@@ -7,3 +7,8 @@
 *.FASL
 *.fasl
 *.lisp-temp
+
+# Vim temp, swap, backup and session
+*.swp
+*~
+Session.vim
