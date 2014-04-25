@@ -47,8 +47,7 @@
 ; variables used in the macro definition, to avoid name collision
 (defmacro with-gensyms ((&rest names) &body body)
   `(let ,(loop for n in names collect `(,n (gensym)))
-    ,@body)
-)
+    ,@body))
 ; `and`-like macro without the short-circuiting trait
 (defmacro combine-results (&body forms)
   (with-gensyms (result)
