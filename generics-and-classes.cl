@@ -27,7 +27,7 @@
 ; Determine account type according to initial balance
 ; @note the use of '&key' to make 'opening-bonus-percentage' a valid keyword
 ; argument of the `MAKE-INSTANCE` function
-; @note that the use of `:afte` auxiliary method to access existing slot
+; @note that the use of `:after` auxiliary method to access existing slot
 ; values while creating the instance.
 (defmethod initialize-instance :after ((account bank-account)
                                        &key opening-bonus-percentage)
@@ -111,3 +111,8 @@
 ; defined as auxiliary method
 (defmethod print-statement :after ((account money-market-account))
   (format t "[money-market-account]~%"))
+; At last, it is obvious that the `:after` auxiliary method is Common Lisp's
+; approach to initialization, just like constructors in C++/Java and `__int__`
+; in Python.
+; Together with `:before` and `:around`, Common Lisp's class system is more
+; flexible and powerful compared to C++/Java/Python.
