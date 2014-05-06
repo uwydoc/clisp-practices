@@ -18,3 +18,10 @@
     :walk-directory-1
     :directory-p
     :file-p))
+
+(defpackage :com.gigamonkeys.spam
+  (:use :common-lisp :com.gigamonkeys.pathnames)
+  (:export
+    :classify
+    :extract-features
+    :clear-database))
