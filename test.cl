@@ -36,3 +36,6 @@
 (defmethod test-aux-order :around ((name string))
   (format t "[around] ~a~%" name)
   (call-next-method))
+;
+(define-condition malformed-log-entry-error (error)
+  ((text :initarg :text :reader text)))
